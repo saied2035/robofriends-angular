@@ -8,12 +8,17 @@ import {getData} from './functions';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-training';
-  users!: Array<item>
+  robots!: Array<item>
+  filteredRobots!: Array<item>
    async ngOnInit() : Promise<void> {
- 	 this.users = await getData()
+ 	  this.robots = await getData()
+    this.filteredRobots = this.robots
    }
-   async onSearchChange(value:string){
-     this.users = await getData(value)
+   onSearchChange(value:string){
+     if(value.length)
+       this.filteredRobots =this.robots.filter((item:item) => item.name.toLowerCase().includes(value.toLowerCase()))
+     else{
+       this.filteredRobots = this.robots
+     }    
    }
 }
