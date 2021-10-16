@@ -1,9 +1,16 @@
 <div *ngIf="filteredRobots;else loading">
 <searchBar (searchValue)= "onSearchChange($event)" ></searchBar>	
- <div class="flex justify-center flex-wrap" style="overflow-y:auto;width:100%;height:75vh;">
-  <card *ngFor="let robot of filteredRobots" [item]="robot"></card>
+ <div *ngIf="filteredRobots.length;else error" class="flex justify-center flex-wrap" 
+ style="overflow-y:auto;width:100%;height:75vh;">
+    <card *ngFor="let robot of filteredRobots" [item]="robot"></card>
  </div>
 </div>
-     <ng-template #loading>
+    <ng-template #loading>
        <div style="height:100vh;" class="flex justify-center items-center f2"><h3>Loading...</h3></div>	
-   </ng-template>	
+   </ng-template>
+
+    <ng-template #error>
+       <div style="height:100vh;" class="flex justify-center">
+         <p class="f3 fw6" style="color:#e4e43e;">error loading robots, try again later.</p>
+       </div>	
+   </ng-template>		

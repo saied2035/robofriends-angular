@@ -7,5 +7,5 @@ export const getData = async () : Promise<Array<item>> => {
             return {url:"https://robohash.org/"+item.id,name:item.name,email:item.email}   	
         }) 		
 	     return dataArray;	
-	})
+	}).catch(err => [])
 }
