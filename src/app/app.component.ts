@@ -13,7 +13,6 @@ export class AppComponent {
    async ngOnInit() : Promise<void> {
  	  this.robots = await getData()
     this.filteredRobots = this.robots
-    console.log(this.filteredRobots)
    }
    onSearchChange(value:string){
      if(value.length)
