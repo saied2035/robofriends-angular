@@ -1,0 +1,6 @@
+<div>
+<searchBar (searchValue)= "onSearchChange($event)" ></searchBar>	
+ <div class="flex justify-center flex-wrap" style="overflow-y:auto;width:100%;height:75vh;">
+  <card *ngFor="let user of users" [item]="user"></card>
+ </div>
+</div>
